@@ -32,8 +32,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-//api handler 
-
 app.post('/generate', async (req, res) => {
     const formData = {
         name: req.body.name,
@@ -157,7 +155,7 @@ app.use('/api', userRouter);
 const storage = multer.memoryStorage();
 
 
-let pdfText = '';
+let pdfText = 'not available';
 const upload = multer({storage})
 app.post('/upload', upload.single('file'), async (req, res) => {
     if(req.file != null) {
@@ -176,6 +174,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     }
 }else {
     console.log('no file');
+    pdfText = "not available";
 }
 });
 

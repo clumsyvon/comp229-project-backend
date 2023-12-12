@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
                 const token = jwt.sign({
                     username: user.username,
                 }, 'clumsy von', {
-                    expiresIn: 300,
+                    expiresIn: 1000,
                 }); 
                 res.send({status: 'success' , token: token, user: user.username, auth: true });
             } else {
